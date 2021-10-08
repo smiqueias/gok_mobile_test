@@ -1,6 +1,6 @@
 
 import 'package:flutter_modular/flutter_modular.dart';
-import 'screens/search_user_screen.dart';
+import 'screens/user_search_screen.dart';
 
 class UserSearchModule extends Module {
 
