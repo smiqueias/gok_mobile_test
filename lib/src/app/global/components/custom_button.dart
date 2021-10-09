@@ -1,14 +1,17 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 import '../../app_colors.dart';
 
 class CustomButton extends StatelessWidget {
 
   final GlobalKey<FormState> userSearchInputKey;
+  final TextEditingController userSearchInputController;
 
-  const CustomButton({Key? key, required this.userSearchInputKey}) : super(key: key);
+  const CustomButton({Key? key, required this.userSearchInputKey, required this.userSearchInputController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,8 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           if ( userSearchInputKey.currentState!.validate()) {
-            print("TUDO OK, buscar nome no github");
+
+            print("foi");
           }
         },
         style: ElevatedButton.styleFrom(

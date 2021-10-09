@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gok_mobile_test/src/app/app_colors.dart';
-import 'package:gok_mobile_test/src/app/app_images.dart';
 import 'package:gok_mobile_test/src/app/global/components/custom_button.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/github_image_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/user_search_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/user_search_form_component.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:validatorless/validatorless.dart';
 
 class UserSearchScreen extends StatefulWidget {
   const UserSearchScreen({Key? key}) : super(key: key);
