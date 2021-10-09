@@ -48,41 +48,61 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                 ),
                 UserSearchFormComponent(
                   formKey: userSearchInputKey,
-                  textEditingController : userSearchInputController,
+                  textEditingController: userSearchInputController,
                 ),
-                CustomButton(userSearchInputKey: userSearchInputKey,),
+                Container(
+                  height: 40,
+                  width: 295,
+                  margin: const EdgeInsets.symmetric(
+                    vertical: 24,
+                    horizontal: 40,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (userSearchInputKey.currentState!.validate()) {
+                        print("foi");
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                        primary: AppColors.buttonColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(100))),
+                    child: Text(
+                      'Cadastrar',
+                      style: GoogleFonts.mulish(
+                        fontSize: 16,
+                        color: AppColors.white,
+                      ),
+                    ),
+                  ),
+                ),
                 Container(
                   margin: const EdgeInsets.symmetric(
                     vertical: 130,
                   ),
                   child: Center(
-                    child: Text.rich(
-                        TextSpan(
-                            text: "Termos de ",
-                            style: GoogleFonts.mulish(
-                              color: AppColors.grey,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16,
+                    child: Text.rich(TextSpan(
+                        text: "Termos de ",
+                        style: GoogleFonts.mulish(
+                          color: AppColors.grey,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                        ),
+                        children: const [
+                          TextSpan(
+                            text: "política ",
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
                             ),
-                            children: const [
-                              TextSpan(
-                                text: "política ",
-                                style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                ),
-                              ),
-                              TextSpan(
-                                  text: "e "
-                              ),
-                              TextSpan(
-                                text: "privacidade",
-                                style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                ),
-                              )
-                            ]
-                        )
-                    ),
+                          ),
+                          TextSpan(text: "e "),
+                          TextSpan(
+                            text: "privacidade",
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                            ),
+                          )
+                        ])),
                   ),
                 )
               ],
