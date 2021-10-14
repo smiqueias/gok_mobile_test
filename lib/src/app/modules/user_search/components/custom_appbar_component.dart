@@ -12,6 +12,7 @@ class CustomAppBarComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8,),
       height: 72,
       width: 375,
       color: AppColors.white,

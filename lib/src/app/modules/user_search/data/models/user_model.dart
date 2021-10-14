@@ -10,12 +10,14 @@ class UserModel {
   final String? company;
   final String? location;
   final String? twitter_username;
+  final int? followers;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 
   UserModel(
       {
+      required this.followers,
       required this.id,
       required this.login,
       required this.avatar_url,

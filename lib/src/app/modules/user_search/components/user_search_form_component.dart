@@ -22,38 +22,36 @@ class UserSearchFormComponent extends StatelessWidget {
       ),
       child: Form(
         key: formKey,
-        child: SizedBox(
-          child: TextFormField(
-            controller: textEditingController,
-            keyboardType: TextInputType.name,
-            cursorColor: AppColors.grey,
-            validator: Validatorless.multiple([
-              Validatorless.required("Preencha este campo"),
-            ]),
-            decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                enabledBorder: const OutlineInputBorder(
-                  borderSide:  BorderSide(
-                    color: AppColors.borderColor,
-                  ),
+        child: TextFormField(
+          controller: textEditingController,
+          keyboardType: TextInputType.name,
+          cursorColor: AppColors.grey,
+          validator: Validatorless.multiple([
+            Validatorless.required("Preencha este campo"),
+          ]),
+          decoration: InputDecoration(
+              border: const OutlineInputBorder(),
+              enabledBorder: const OutlineInputBorder(
+                borderSide:  BorderSide(
+                  color: AppColors.borderColor,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4.0),
-                  borderSide: const BorderSide(
-                    color: AppColors.borderColor,
-                  ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4.0),
+                borderSide: const BorderSide(
+                  color: AppColors.borderColor,
                 ),
-                hintText: "@username",
-                hintStyle: GoogleFonts.roboto(
-                  color: AppColors.grey,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                ),
-                prefixIcon: const Icon(
-                  Icons.account_circle,
-                  color: AppColors.iconColor,
-                )
-            ),
+              ),
+              hintText: "@username",
+              hintStyle: GoogleFonts.roboto(
+                color: AppColors.grey,
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+              ),
+              prefixIcon: const Icon(
+                Icons.account_circle,
+                color: AppColors.iconColor,
+              )
           ),
         ),
       ),

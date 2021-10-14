@@ -14,6 +14,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
     company: json['company'] as String?,
     location: json['location'] as String?,
     twitter_username: json['twitter_username'] as String?,
+    followers: json['followers'] as int?,
   );
 }
 
