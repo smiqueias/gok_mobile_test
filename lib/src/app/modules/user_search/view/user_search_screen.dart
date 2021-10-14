@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gok_mobile_test/src/app/app_colors.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/github_image_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/terms_privacy_policy_component.dart';
@@ -60,7 +61,10 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (userSearchInputKey.currentState!.validate()) {
-                        print("saadada");
+
+                        final searchedUserByUser = userSearchInputController.text;
+
+                        Modular.to.navigate("/user/$searchedUserByUser");
                       }
                     },
                     style: ElevatedButton.styleFrom(

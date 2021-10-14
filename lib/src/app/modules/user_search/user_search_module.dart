@@ -8,7 +8,7 @@ class UserSearchModule extends Module {
   @override
   List<ModularRoute> get routes => [
     ChildRoute(Modular.initialRoute, child: (_,args) => const UserSearchScreen()),
-    ChildRoute('/user/:name', child: (_,args) => const UserScreen()),
+    ChildRoute('/user/:name', child: (_,args) => UserScreen(name: args.params['name'])),
   ];
 
 }
