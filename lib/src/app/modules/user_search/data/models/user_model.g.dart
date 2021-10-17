@@ -10,10 +10,10 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
   return UserModel(
     id: json['id'] as int,
     login: json['login'] as String,
-    avatar_url: json['avatar_url'] as String,
+    avatarUrl: json['avatar_url'] as String,
     company: json['company'] as String?,
     location: json['location'] as String?,
-    twitter_username: json['twitter_username'] as String?,
+    twitterUsername: json['twitter_username'] as String?,
     followers: json['followers'] as int?,
   );
 }
@@ -21,8 +21,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'id': instance.id,
       'login': instance.login,
-      'avatar_url': instance.avatar_url,
+      'avatar_url': instance.avatarUrl,
       'company': instance.company,
       'location': instance.location,
-      'twitter_username': instance.twitter_username,
+      'twitter_username': instance.twitterUsername,
     };
