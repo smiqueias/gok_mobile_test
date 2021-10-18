@@ -7,7 +7,6 @@ class UserRepoModel extends Equatable {
   final String createdAt;
   final int stargazersCount;
   final int watchersCount;
-  final UserRepoOwner userRepoOwner;
 
   const UserRepoModel({
     required this.id,
@@ -15,7 +14,6 @@ class UserRepoModel extends Equatable {
     required this.language,
     required this.stargazersCount,
     required this.createdAt,
-    required this.userRepoOwner,
     required this.watchersCount,
   });
 
@@ -26,7 +24,6 @@ class UserRepoModel extends Equatable {
       language: json['language'],
       stargazersCount: json['stargazers_count'],
       createdAt: json['created_at'],
-      userRepoOwner: UserRepoOwner.fromJson(json['owner']),
       watchersCount: json['watchers_count'],
     );
   }
@@ -38,21 +35,6 @@ class UserRepoModel extends Equatable {
         language,
         stargazersCount,
         createdAt,
-        userRepoOwner,
         watchersCount,
       ];
-}
-
-class UserRepoOwner extends Equatable {
-  final String avatarUrl;
-
-  const UserRepoOwner({required this.avatarUrl});
-
-  factory UserRepoOwner.fromJson(Map<String, dynamic> json) {
-    return UserRepoOwner(
-      avatarUrl: json['avatar_url'],
-    );
-  }
-  @override
-  List<Object?> get props => [avatarUrl];
 }
