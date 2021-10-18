@@ -33,6 +33,7 @@ class UserDeckComponent extends StatelessWidget {
             return UserInfoComponent(
               size: size,
               state: state,
+              username: username,
             );
           } else if (state is UserSearchError) {
             return Container(

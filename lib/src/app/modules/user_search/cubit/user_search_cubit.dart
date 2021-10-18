@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/cubit/user_search_state.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/data/interfaces/i_user_search.dart';
 import 'package:logger/logger.dart';
@@ -23,7 +22,7 @@ class UserSearchCubit extends Cubit<UserSearchState> {
     } on SocketException catch (e) {
       emit(const UserSearchError("Sem internet. Tente novamente mais tarde."));
       _log.e("Error in UserSearchCubit: $e");
-    } on DioError catch (e) {
+    } catch (e) {
       emit(const UserSearchError("Erro ao pesquisar o usuário"));
       _log.e("Error in UserSearchCubit: $e");
     }

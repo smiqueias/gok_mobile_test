@@ -18,7 +18,12 @@ class UserScreen extends StatelessWidget {
         width: size.width,
         child: SafeArea(
           child: Column(
-            children:  [const CustomAppBarComponent(), UserDeckComponent( username: username,)],
+            children: [
+              const CustomAppBarComponent(),
+              UserDeckComponent(
+                username: username,
+              )
+            ],
           ),
         ),
       ),
