@@ -34,4 +34,14 @@ class UserRepoCubit extends Cubit<UserRepoState> {
       _log.e("Error in UserRepoCubit: $e");
     }
   }
+
+  int calculateRepoTime(String repoDate) {
+    final repoYear = int.parse(repoDate.toString().substring(0, 4));
+    final repoMonth = int.parse(repoDate.toString().substring(5, 7));
+    final repoDay = int.parse(repoDate.toString().substring(8, 10));
+    final currentDate = DateTime.now();
+    final repoTime = DateTime(repoYear, repoMonth, repoDay);
+    final difference = currentDate.difference(repoTime).inDays;
+    return difference;
+  }
 }
