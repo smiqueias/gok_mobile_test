@@ -5,6 +5,7 @@ import 'package:gok_mobile_test/src/app/modules/user_repo/component/star_icon_co
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/tag_list_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/data/cubit/user_repo_cubit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../utils/extensions/string_extension.dart';
 import '../../../app_colors.dart';
 
@@ -13,7 +14,6 @@ class UserRepoDeck extends StatelessWidget {
   final int index;
   final dynamic state;
   final List<String> tags;
-  final VoidCallback launchLink;
   final UserRepoCubit userRepoCubit;
 
   const UserRepoDeck({
@@ -22,9 +22,18 @@ class UserRepoDeck extends StatelessWidget {
     required this.index,
     required this.state,
     required this.tags,
-    required this.launchLink,
     required this.userRepoCubit,
   }) : super(key: key);
+
+  Future<void> _launcLink(String url, BuildContext context) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: false, forceSafariVC: false);
+    } else {
+      final snackBar =
+          SnackBar(content: Text("Não foi possível acessar o repopositório"));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +90,10 @@ class UserRepoDeck extends StatelessWidget {
                       top: 24,
                     ),
                     child: IconButton(
-                      onPressed: () => launchLink,
+                      onPressed: () => _launcLink(
+                        state.userRepoModel[index].htmlUrl,
+                        context,
+                      ),
                       icon: const Icon(
                         Icons.keyboard_arrow_right,
                         size: 24,

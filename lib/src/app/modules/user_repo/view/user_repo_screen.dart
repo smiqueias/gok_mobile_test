@@ -18,16 +18,6 @@ class UserRepoScreen extends StatefulWidget {
 }
 
 class _UserRepoScreenState extends State<UserRepoScreen> {
-  Future<void> _launcLink(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url, forceWebView: false, forceSafariVC: false);
-    } else {
-      final snackBar =
-          SnackBar(content: Text("Não foi possível acessar o repopositório"));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -84,9 +74,6 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                               itemBuilder: (context, index) {
                                 return UserRepoDeck(
                                   index: index,
-                                  launchLink: () => _launcLink(
-                                    state.userRepoModel[index].htmlUrl,
-                                  ),
                                   size: size,
                                   state: state,
                                   tags: tags,

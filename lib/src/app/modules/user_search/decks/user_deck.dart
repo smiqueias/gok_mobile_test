@@ -6,10 +6,10 @@ import 'package:gok_mobile_test/src/app/modules/user_search/cubit/user_search_cu
 import 'package:gok_mobile_test/src/app/modules/user_search/cubit/user_search_state.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/data/repositories/user_search_repository.dart';
 
-class UserDeckComponent extends StatelessWidget {
+class UserDeck extends StatelessWidget {
   final String username;
 
-  const UserDeckComponent({Key? key, required this.username}) : super(key: key);
+  const UserDeck({Key? key, required this.username}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

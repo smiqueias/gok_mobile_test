@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/custom_appbar_component.dart';
-import 'package:gok_mobile_test/src/app/modules/user_search/components/user_deck_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_search/decks/user_deck.dart';
 
 class UserScreen extends StatelessWidget {
   final String username;
@@ -20,7 +20,7 @@ class UserScreen extends StatelessWidget {
           child: Column(
             children: [
               const CustomAppBarComponent(),
-              UserDeckComponent(
+              UserDeck(
                 username: username,
               )
             ],
