@@ -37,9 +37,7 @@ class SearchBarInputComponent extends StatelessWidget {
       child: Form(
         child: TextFormField(
           controller: searchBarInputController,
-          onChanged: (value) {
-            print(value);
-          },
+          onChanged: (value) {},
           decoration: InputDecoration(
             prefixIcon: const Icon(
               Icons.search,

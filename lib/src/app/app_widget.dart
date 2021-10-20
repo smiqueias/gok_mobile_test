@@ -6,13 +6,12 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Gok Mobile Test',
-        theme: ThemeData (
-          primarySwatch: Colors.grey,
-        ),
-      ).modular();
-
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Gok Mobile Test',
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+      ),
+    ).modular();
   }
 }

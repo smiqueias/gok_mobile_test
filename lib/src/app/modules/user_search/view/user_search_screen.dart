@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gok_mobile_test/src/app/app_colors.dart';
@@ -7,7 +6,6 @@ import 'package:gok_mobile_test/src/app/modules/user_search/components/terms_pri
 import 'package:gok_mobile_test/src/app/modules/user_search/components/user_search_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/user_search_form_component.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class UserSearchScreen extends StatefulWidget {
   const UserSearchScreen({Key? key}) : super(key: key);
@@ -41,7 +39,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                     left: 40,
                   ),
                   child: Text(
-                    "Crie sua conta através do seu usuário \ndo GitHub",
+                    "Encontre qualquer conta através do seu usuário do GitHub.",
                     style: GoogleFonts.mulish(
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
@@ -63,8 +61,8 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (userSearchInputKey.currentState!.validate()) {
-
-                        final searchedUserByUser = userSearchInputController.text.trim();
+                        final searchedUserByUser =
+                            userSearchInputController.text.trim();
 
                         Modular.to.navigate("/user/$searchedUserByUser");
                       }
@@ -74,7 +72,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     child: Text(
-                      'Cadastrar',
+                      'Buscar',
                       style: GoogleFonts.mulish(
                         fontSize: 16,
                         color: AppColors.white,

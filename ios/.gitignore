@@ -6,6 +6,7 @@
 *.perspectivev3
 **/*sync/
 .sconsign.dblite
+/.fvm/
 .tags*
 **/.vagrant/
 **/DerivedData/

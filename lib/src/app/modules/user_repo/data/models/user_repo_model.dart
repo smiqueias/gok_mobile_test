@@ -6,12 +6,14 @@ class UserRepoModel extends Equatable {
   final String? language;
   final String? description;
   final String createdAt;
+  final String htmlUrl;
   final int stargazersCount;
   final int watchersCount;
 
   const UserRepoModel({
     required this.description,
     required this.id,
+    required this.htmlUrl,
     required this.name,
     required this.language,
     required this.stargazersCount,
@@ -28,6 +30,7 @@ class UserRepoModel extends Equatable {
       createdAt: json['created_at'],
       watchersCount: json['watchers_count'],
       description: json['description'] ?? "Não informado",
+      htmlUrl: json['html_url'],
     );
   }
 
