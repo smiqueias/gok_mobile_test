@@ -51,7 +51,15 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                 );
               } else if (state is UserRepoLoaded) {
                 return state.userRepoModel.isEmpty
-                    ? RepoEmptyLabelComponent(userDTO: widget.userDTO)
+                    ? RepoEmptyLabelComponent(
+                        userDTO: widget.userDTO,
+                        searchController: _searchController,
+                        size: size,
+                        state: state,
+                        userRepoCubit: context.read<UserRepoCubit>(),
+                        label:
+                            "${widget.userDTO.username} não possui repositorios criados ou públicos.",
+                      )
                     : Column(
                         children: [
                           SearchBarInputComponent(
@@ -82,7 +90,14 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                       );
               } else if (state is UserRepoFiltered) {
                 return state.userRepoModel.isEmpty
-                    ? RepoEmptyLabelComponent(userDTO: widget.userDTO)
+                    ? RepoEmptyLabelComponent(
+                        userDTO: widget.userDTO,
+                        searchController: _searchController,
+                        size: size,
+                        state: state,
+                        userRepoCubit: context.read<UserRepoCubit>(),
+                        label: "Nenhum repositório encontrado.",
+                      )
                     : Column(
                         children: [
                           SearchBarInputComponent(
