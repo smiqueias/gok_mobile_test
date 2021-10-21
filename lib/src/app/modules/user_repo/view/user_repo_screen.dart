@@ -130,6 +130,16 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                           ),
                         ],
                       );
+              } else if (state is UserRepoError) {
+                return Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 200),
+                    child: Text(
+                      state.errorMessage,
+                    ),
+                  ),
+                );
               }
               return const SizedBox.shrink();
             },

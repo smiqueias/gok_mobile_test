@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/data/interfaces/i_user_repo.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/user_repo_model.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:logger/logger.dart';
 
 part 'user_repo_state.dart';
@@ -23,15 +24,18 @@ class UserRepoCubit extends Cubit<UserRepoState> {
 
   Future<void> fetchUserRepo(String username) async {
     try {
-      emit(const UserRepoLoading());
-      final userRepo = await _userRepoRepository.fetchUserRepo(username);
-      userRepoModel = userRepo;
-      emit(UserRepoLoaded(userRepo));
-    } on SocketException catch (e) {
-      emit(const UserRepoError("Sem internet. Tente novamente mais tarde."));
-      _log.e("Error in UserRepoCubit: $e");
+      bool hasInternet = await InternetConnectionChecker().hasConnection;
+
+      if (hasInternet) {
+        emit(const UserRepoLoading());
+        final userRepo = await _userRepoRepository.fetchUserRepo(username);
+        userRepoModel = userRepo;
+        emit(UserRepoLoaded(userRepo));
+      } else {
+        emit(const UserRepoError("Verifique sua conexão e tente novamente!"));
+      }
     } catch (e) {
-      emit(const UserRepoError("Erro ao pesquisar o usuário"));
+      emit(const UserRepoError("Erro ao pesquisar o repositório"));
       _log.e("Error in UserRepoCubit: $e");
     }
   }

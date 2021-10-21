@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/cubit/user_search_state.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/data/interfaces/i_user_search.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:logger/logger.dart';
 
 class UserSearchCubit extends Cubit<UserSearchState> {
@@ -16,15 +18,21 @@ class UserSearchCubit extends Cubit<UserSearchState> {
 
   Future<void> fetchUser(String username) async {
     try {
-      emit(const UserSearchLoading());
-      final userFound = await _userSearchRepository.fetchUser(username);
-      emit(UserSearchLoaded(userFound));
-    } on SocketException catch (e) {
-      emit(const UserSearchError("Sem internet. Tente novamente mais tarde."));
-      _log.e("Error in UserSearchCubit: $e");
-    } catch (e) {
-      emit(const UserSearchError("Erro ao pesquisar o usuário"));
-      _log.e("Error in UserSearchCubit: $e");
+      bool hasInternet = await InternetConnectionChecker().hasConnection;
+      if (hasInternet) {
+        emit(const UserSearchLoading());
+        final userFound = await _userSearchRepository.fetchUser(username);
+        emit(UserSearchLoaded(userFound));
+      } else {
+        emit(const UserSearchError("Verifique sua conexão e tente novamente!"));
+      }
+    } on DioError catch (e) {
+      if (e.response!.statusCode == 404) {
+        emit(const UserSearchError("Usuário não encontrado"));
+      } else {
+        emit(const UserSearchError("Erro ao pesquisar o usuário"));
+        _log.e("Error in UserSearchCubit: $e");
+      }
     }
   }
 }

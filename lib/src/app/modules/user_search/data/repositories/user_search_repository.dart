@@ -3,9 +3,7 @@ import 'package:gok_mobile_test/src/app/modules/user_search/data/interfaces/i_us
 import 'package:gok_mobile_test/src/app/modules/user_search/data/models/user_model.dart';
 import 'package:logger/logger.dart';
 
-
 class UserSearchRepository implements IUserSearch {
-
   final Dio _dio;
   final Logger _log;
 
@@ -21,5 +19,4 @@ class UserSearchRepository implements IUserSearch {
       rethrow;
     }
   }
-
 }
