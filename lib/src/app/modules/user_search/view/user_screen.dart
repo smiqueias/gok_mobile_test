@@ -4,13 +4,15 @@ import 'package:gok_mobile_test/src/app/modules/user_search/components/custom_ap
 import 'package:gok_mobile_test/src/app/modules/user_search/decks/user_deck.dart';
 
 class UserScreen extends StatelessWidget {
-  final String username;
+  static const screenRoute = "/user";
 
-  const UserScreen({Key? key, required this.username}) : super(key: key);
+  const UserScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
+    final args = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
       body: SizedBox(
@@ -21,7 +23,7 @@ class UserScreen extends StatelessWidget {
             children: [
               const CustomAppBarComponent(),
               UserDeck(
-                username: username,
+                username: args,
               )
             ],
           ),

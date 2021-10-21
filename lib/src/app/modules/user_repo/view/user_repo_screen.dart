@@ -1,16 +1,18 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/appbar_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/repo_empty_label_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/search_bar_input_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/data/repositories/user_repo_repository.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/decks/user_repo_deck.dart';
 import 'package:gok_mobile_test/src/app/utils/user_dto.dart';
+import 'package:logger/logger.dart';
 
 class UserRepoScreen extends StatefulWidget {
-  final UserDTO userDTO;
-  const UserRepoScreen({Key? key, required this.userDTO}) : super(key: key);
+  static const String screenRoute = "/userRepo";
+  const UserRepoScreen({Key? key}) : super(key: key);
 
   @override
   State<UserRepoScreen> createState() => _UserRepoScreenState();
@@ -23,6 +25,8 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
+    final userDTO = ModalRoute.of(context)!.settings.arguments as UserDTO;
+
     List<String> tags = [
       "#TagTeste01",
       "#TagTeste02",
@@ -33,14 +37,14 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
 
     return BlocProvider(
       create: (context) => UserRepoCubit(
-        Modular.get(),
-        Modular.get(),
-        widget.userDTO.username,
+        UserRepoRepository(Dio(), Logger()),
+        Logger(),
+        userDTO.username,
       ),
       child: Scaffold(
         appBar: AppBarComponent(
           size: size,
-          userDTO: widget.userDTO,
+          userDTO: userDTO,
         ),
         body: SafeArea(
           child: BlocBuilder<UserRepoCubit, UserRepoState>(
@@ -52,13 +56,13 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
               } else if (state is UserRepoLoaded) {
                 return state.userRepoModel.isEmpty
                     ? RepoEmptyLabelComponent(
-                        userDTO: widget.userDTO,
+                        userDTO: userDTO,
                         searchController: _searchController,
                         size: size,
                         state: state,
                         userRepoCubit: context.read<UserRepoCubit>(),
                         label:
-                            "${widget.userDTO.username} não possui repositorios criados ou públicos.",
+                            "${userDTO.username} não possui repositorios criados ou públicos.",
                       )
                     : Column(
                         children: [
@@ -91,7 +95,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
               } else if (state is UserRepoFiltered) {
                 return state.userRepoModel.isEmpty
                     ? RepoEmptyLabelComponent(
-                        userDTO: widget.userDTO,
+                        userDTO: userDTO,
                         searchController: _searchController,
                         size: size,
                         state: state,

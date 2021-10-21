@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/view/user_repo_screen.dart';
 import 'package:gok_mobile_test/src/app/utils/user_dto.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../app_colors.dart';
@@ -27,8 +27,9 @@ class UserInfoComponent extends StatelessWidget {
       width: (343 / size.width) * size.width,
       height: (150 / size.height) * size.height,
       child: InkWell(
-        onTap: () => Modular.to.pushNamed(
-          '/repo/',
+        onTap: () => Navigator.pushNamed(
+          context,
+          UserRepoScreen.screenRoute,
           arguments: UserDTO(state.userModel.avatarUrl, username),
         ),
         child: Container(

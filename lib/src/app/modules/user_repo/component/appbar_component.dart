@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gok_mobile_test/src/app/utils/user_dto.dart';
 
 import '../../../app_colors.dart';
@@ -19,7 +18,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColors.white,
       toolbarHeight: (72 / size.height) * size.height,
       leading: IconButton(
-        onPressed: () => Modular.to.pop(context),
+        onPressed: () => Navigator.pop(context),
         icon: const Icon(
           Icons.arrow_back,
           size: 32,

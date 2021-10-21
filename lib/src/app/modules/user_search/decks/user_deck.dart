@@ -1,10 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/user_infos_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/cubit/user_search_cubit.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/cubit/user_search_state.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/data/repositories/user_search_repository.dart';
+import 'package:logger/logger.dart';
 
 class UserDeck extends StatelessWidget {
   final String username;
@@ -17,9 +18,7 @@ class UserDeck extends StatelessWidget {
 
     return BlocProvider(
       create: (context) => UserSearchCubit(
-          UserSearchRepository(Modular.get(), Modular.get()),
-          Modular.get(),
-          username),
+          UserSearchRepository(Dio(), Logger()), Logger(), username),
       child: BlocBuilder<UserSearchCubit, UserSearchState>(
         builder: (context, state) {
           if (state is UserSearchInitial) {

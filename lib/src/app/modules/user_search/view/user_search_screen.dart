@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gok_mobile_test/src/app/app_colors.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/github_image_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/terms_privacy_policy_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/user_search_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/user_search_form_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_search/view/user_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UserSearchScreen extends StatefulWidget {
   const UserSearchScreen({Key? key}) : super(key: key);
+  static const screenRoute = "/userSearch";
 
   @override
   State<UserSearchScreen> createState() => _UserSearchScreenState();
@@ -17,7 +18,6 @@ class UserSearchScreen extends StatefulWidget {
 class _UserSearchScreenState extends State<UserSearchScreen> {
   final userSearchInputKey = GlobalKey<FormState>();
   final userSearchInputController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -64,7 +64,11 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                         final searchedUserByUser =
                             userSearchInputController.text.trim();
 
-                        Modular.to.navigate("/user/$searchedUserByUser");
+                        Navigator.pushNamed(
+                          context,
+                          UserScreen.screenRoute,
+                          arguments: searchedUserByUser,
+                        );
                       }
                     },
                     style: ElevatedButton.styleFrom(

@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:gok_mobile_test/src/app/modules/user_search/view/user_search_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../app_colors.dart';
@@ -12,7 +11,9 @@ class CustomAppBarComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8,),
+      margin: const EdgeInsets.symmetric(
+        horizontal: 8,
+      ),
       height: 72,
       width: 375,
       color: AppColors.white,
@@ -31,7 +32,8 @@ class CustomAppBarComponent extends StatelessWidget {
                 borderRadius: BorderRadius.circular(100),
               ),
             ),
-            onPressed: () => Modular.to.navigate('/'),
+            onPressed: () =>
+                Navigator.pushNamed(context, UserSearchScreen.screenRoute),
             child: Text(
               'Adiconar novo',
               style: GoogleFonts.mulish(
