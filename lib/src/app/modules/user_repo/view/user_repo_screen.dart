@@ -3,10 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/appbar_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/repo_empty_label_component.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/search_bar_component.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/data/cubit/user_repo_cubit.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/component/search_bar_input_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/decks/user_repo_deck.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:gok_mobile_test/src/app/utils/user_dto.dart';
 
 class UserRepoScreen extends StatefulWidget {
@@ -18,10 +17,11 @@ class UserRepoScreen extends StatefulWidget {
 }
 
 class _UserRepoScreenState extends State<UserRepoScreen> {
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final TextEditingController _searchController = TextEditingController();
 
     List<String> tags = [
       "#TagTeste01",
@@ -30,13 +30,6 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
       "#TagTeste04",
       "#TagTeste05",
     ];
-
-    @override
-    // ignore: unused_element
-    void dispose() {
-      _searchController.dispose();
-      super.dispose();
-    }
 
     return BlocProvider(
       create: (context) => UserRepoCubit(
@@ -61,9 +54,43 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                     ? RepoEmptyLabelComponent(userDTO: widget.userDTO)
                     : Column(
                         children: [
-                          SearchBarComponent(
-                              size: size,
-                              searchBarInputController: _searchController),
+                          SearchBarInputComponent(
+                            searchBarInputController: _searchController,
+                            size: size,
+                            userRepoCubit: context.read<UserRepoCubit>(),
+                            state: state,
+                          ),
+                          SizedBox(
+                            height: (8 / size.height) * size.height,
+                          ),
+                          Expanded(
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: state.userRepoModel.length,
+                              itemBuilder: (context, index) {
+                                return UserRepoDeck(
+                                  index: index,
+                                  size: size,
+                                  state: state,
+                                  tags: tags,
+                                  userRepoCubit: context.read<UserRepoCubit>(),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      );
+              } else if (state is UserRepoFiltered) {
+                return state.userRepoModel.isEmpty
+                    ? RepoEmptyLabelComponent(userDTO: widget.userDTO)
+                    : Column(
+                        children: [
+                          SearchBarInputComponent(
+                            searchBarInputController: _searchController,
+                            size: size,
+                            userRepoCubit: context.read<UserRepoCubit>(),
+                            state: state,
+                          ),
                           SizedBox(
                             height: (8 / size.height) * size.height,
                           ),

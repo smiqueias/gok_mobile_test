@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/data/cubit/user_repo_cubit.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../utils/extensions/string_extension.dart';
 import '../../../app_colors.dart';
 
 class RepoInfoComponent extends StatelessWidget {

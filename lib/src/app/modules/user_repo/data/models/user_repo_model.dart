@@ -10,6 +10,8 @@ class UserRepoModel extends Equatable {
   final int stargazersCount;
   final int watchersCount;
 
+  
+
   const UserRepoModel({
     required this.description,
     required this.id,
@@ -43,4 +45,26 @@ class UserRepoModel extends Equatable {
         createdAt,
         watchersCount,
       ];
+
+  UserRepoModel copyWith({
+    int? id,
+    String? name,
+    String? language,
+    String? description,
+    String? createdAt,
+    String? htmlUrl,
+    int? stargazersCount,
+    int? watchersCount,
+  }) {
+    return UserRepoModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      language: language ?? this.language,
+      description: description ?? this.description,
+      createdAt: createdAt ?? this.createdAt,
+      htmlUrl: htmlUrl ?? this.htmlUrl,
+      stargazersCount: stargazersCount ?? this.stargazersCount,
+      watchersCount: watchersCount ?? this.watchersCount,
+    );
+  }
 }

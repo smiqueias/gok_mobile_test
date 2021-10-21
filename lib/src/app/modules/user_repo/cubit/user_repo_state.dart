@@ -8,11 +8,15 @@ abstract class UserRepoState extends Equatable {
 }
 
 class UserRepoInitial extends UserRepoState {
+  const UserRepoInitial();
+
   @override
   List<Object> get props => [];
 }
 
 class UserRepoLoading extends UserRepoState {
+  const UserRepoLoading();
+
   @override
   List<Object> get props => [];
 }
@@ -21,6 +25,17 @@ class UserRepoLoaded extends UserRepoState {
   final List<UserRepoModel> userRepoModel;
 
   const UserRepoLoaded(this.userRepoModel);
+
+  @override
+  List<Object> get props => [userRepoModel];
+}
+
+class UserRepoFiltered extends UserRepoState {
+  final List<UserRepoModel> userRepoModel;
+
+  const UserRepoFiltered({
+    required this.userRepoModel,
+  });
 
   @override
   List<Object> get props => [userRepoModel];

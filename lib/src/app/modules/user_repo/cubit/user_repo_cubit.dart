@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/data/interfaces/i_user_repo.dart';
@@ -12,19 +11,21 @@ class UserRepoCubit extends Cubit<UserRepoState> {
   final IUserRepo _userRepoRepository;
   final Logger _log;
   final String username;
+  List<UserRepoModel>? userRepoModel;
 
   UserRepoCubit(
     this._userRepoRepository,
     this._log,
     this.username,
-  ) : super(UserRepoInitial()) {
+  ) : super(const UserRepoInitial()) {
     fetchUserRepo(username);
   }
 
   Future<void> fetchUserRepo(String username) async {
     try {
-      emit(UserRepoLoading());
+      emit(const UserRepoLoading());
       final userRepo = await _userRepoRepository.fetchUserRepo(username);
+      userRepoModel = userRepo;
       emit(UserRepoLoaded(userRepo));
     } on SocketException catch (e) {
       emit(const UserRepoError("Sem internet. Tente novamente mais tarde."));
@@ -33,6 +34,17 @@ class UserRepoCubit extends Cubit<UserRepoState> {
       emit(const UserRepoError("Erro ao pesquisar o usuário"));
       _log.e("Error in UserRepoCubit: $e");
     }
+  }
+
+  onSubmitted(String value) {
+    var userRepoFiltered = userRepoModel!
+        .where(
+          (e) => e.toString().toLowerCase().contains(
+                value.toLowerCase(),
+              ),
+        )
+        .toList();
+    emit(UserRepoFiltered(userRepoModel: userRepoFiltered));
   }
 
   int calculateRepoTime(String repoCreateAt) {

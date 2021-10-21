@@ -3,7 +3,7 @@ import 'package:gok_mobile_test/src/app/modules/user_repo/component/description_
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/repo_info_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/star_icon_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/tag_list_component.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/data/cubit/user_repo_cubit.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../utils/extensions/string_extension.dart';
@@ -29,7 +29,7 @@ class UserRepoDeck extends StatelessWidget {
     if (await canLaunch(url)) {
       await launch(url, forceWebView: false, forceSafariVC: false);
     } else {
-      final snackBar =
+      const snackBar =
           SnackBar(content: Text("Não foi possível acessar o repopositório"));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
