@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/view/user_search_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,25 +12,25 @@ class CustomAppBarComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 8,
+      margin: EdgeInsets.symmetric(
+        horizontal: 8.h,
       ),
-      height: 72,
-      width: 375,
+      height: 72.h,
+      width: 375.w,
       color: AppColors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
             AppImages.githubLogo,
-            width: 98.92,
-            height: 40,
+            width: 98.92.w,
+            height: 40.h,
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: AppColors.black,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(100),
+                borderRadius: BorderRadius.circular(100.r),
               ),
             ),
             onPressed: () =>

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_colors.dart';
 
@@ -11,16 +12,16 @@ class FilterListIconComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        left: 8.0,
-        top: 8.0,
+      margin: EdgeInsets.only(
+        left: 8.0.w,
+        top: 8.0.h,
       ),
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(4.0),
+        borderRadius: BorderRadius.circular(4.0.r),
       ),
-      height: (40 / size.height) * size.height,
-      width: (40 / size.width) * size.width,
+      height: 40.h,
+      width: 40.w,
       child: const Center(
         child: Icon(
           Icons.filter_list,

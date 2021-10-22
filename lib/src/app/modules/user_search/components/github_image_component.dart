@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../app_images.dart';
 
@@ -9,11 +9,11 @@ class GithubImageComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        top: 60,
-        left: 89,
-        right: 88.15,
-        bottom: 80,
+      margin: EdgeInsets.only(
+        top: 60.h,
+        left: 89.w,
+        right: 88.15.w,
+        bottom: 80.h,
       ),
       child: Center(
         child: Image.asset(

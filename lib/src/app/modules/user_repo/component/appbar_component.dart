@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/utils/user_dto.dart';
 
 import '../../../app_colors.dart';
@@ -16,7 +17,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0.0,
       backgroundColor: AppColors.white,
-      toolbarHeight: (72 / size.height) * size.height,
+      toolbarHeight: 72.h,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
         icon: const Icon(

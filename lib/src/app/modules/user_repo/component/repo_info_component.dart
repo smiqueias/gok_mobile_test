@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../app_colors.dart';
@@ -20,10 +21,10 @@ class RepoInfoComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        top: 16.0,
-        left: 16.0,
-        bottom: 8.0,
+      margin: EdgeInsets.only(
+        top: 16.0.h,
+        left: 16.0.w,
+        bottom: 8.0.h,
       ),
       child: Row(
         children: [

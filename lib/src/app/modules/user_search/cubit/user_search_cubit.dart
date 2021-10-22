@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/cubit/user_search_state.dart';

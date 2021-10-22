@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/user_infos_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/cubit/user_search_cubit.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/cubit/user_search_state.dart';
@@ -25,7 +26,7 @@ class UserDeck extends StatelessWidget {
             return const SizedBox.shrink();
           } else if (state is UserSearchLoading) {
             return Container(
-              margin: const EdgeInsets.only(top: 200),
+              margin: EdgeInsets.only(top: 200.h),
               child: const CircularProgressIndicator(),
             );
           } else if (state is UserSearchLoaded) {

@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../app_colors.dart';
@@ -10,8 +10,8 @@ class TermsPrivacyPolicyComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        vertical: 130,
+      margin: EdgeInsets.symmetric(
+        vertical: 130.w,
       ),
       child: Center(
         child: Text.rich(TextSpan(

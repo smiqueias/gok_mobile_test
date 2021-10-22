@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/appbar_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/repo_empty_label_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/search_bar_input_component.dart';
@@ -32,7 +33,6 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
       "#TagTeste02",
       "#TagTeste03",
       "#TagTeste04",
-      "#TagTeste05",
     ];
 
     return BlocProvider(
@@ -73,7 +73,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                             state: state,
                           ),
                           SizedBox(
-                            height: (8 / size.height) * size.height,
+                            height: 8.h,
                           ),
                           Expanded(
                             child: ListView.builder(
@@ -111,7 +111,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                             state: state,
                           ),
                           SizedBox(
-                            height: (8 / size.height) * size.height,
+                            height: 8.h,
                           ),
                           Expanded(
                             child: ListView.builder(
@@ -134,7 +134,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                 return Align(
                   alignment: Alignment.topCenter,
                   child: Container(
-                    margin: const EdgeInsets.only(top: 200),
+                    margin: EdgeInsets.only(top: 200.h),
                     child: Text(
                       state.errorMessage,
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/description_label_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/repo_info_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/component/star_icon_component.dart';
@@ -38,12 +39,12 @@ class UserRepoDeck extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 8,
+      margin: EdgeInsets.symmetric(
+        horizontal: 16.h,
+        vertical: 8.w,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(8.0.r),
         color: AppColors.white,
         boxShadow: [
           BoxShadow(
@@ -57,8 +58,8 @@ class UserRepoDeck extends StatelessWidget {
           )
         ],
       ),
-      height: (190 / size.height) * size.height,
-      width: (343 / size.width) * size.width,
+      height: 190.h,
+      width: 343.w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -68,9 +69,9 @@ class UserRepoDeck extends StatelessWidget {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 16,
-                      top: 26,
+                    padding: EdgeInsets.only(
+                      left: 16.w,
+                      top: 26.h,
                     ),
                     child: Text(
                       state.userRepoModel[index].name!
@@ -86,8 +87,8 @@ class UserRepoDeck extends StatelessWidget {
                     width: (8 / size.width) * size.width,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      top: 24,
+                    padding: EdgeInsets.only(
+                      top: 24.h,
                     ),
                     child: IconButton(
                       onPressed: () => _launcLink(
@@ -117,6 +118,7 @@ class UserRepoDeck extends StatelessWidget {
           ),
           TagListComponent(
             tags: tags,
+            size: size,
           ),
           RepoInfoComponent(
             index: index,

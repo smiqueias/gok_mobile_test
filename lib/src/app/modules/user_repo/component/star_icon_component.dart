@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../app_colors.dart';
 
 class StarIconComponent extends StatelessWidget {
@@ -18,13 +19,13 @@ class StarIconComponent extends StatelessWidget {
     return Visibility(
       visible: state.userRepoModel[index].stargazersCount > 0,
       child: Padding(
-        padding: const EdgeInsets.only(
-          top: 24.0,
-          right: 32.0,
+        padding: EdgeInsets.only(
+          top: 24.0.h,
+          right: 32.0.w,
         ),
         child: Container(
-          height: (24 / size.height) * size.height,
-          width: (24 / size.width) * size.width,
+          height: 24.h,
+          width: 24.w,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: AppColors.backgroundStarColor.withOpacity(0.16),

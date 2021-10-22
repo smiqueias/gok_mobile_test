@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DescriptionLabelComponent extends StatelessWidget {
@@ -15,9 +16,9 @@ class DescriptionLabelComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 16,
-        left: 16,
+      padding: EdgeInsets.only(
+        top: 16.h,
+        left: 16.w,
       ),
       child: Text(
         description,

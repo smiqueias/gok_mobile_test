@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../app_colors.dart';
@@ -9,8 +10,8 @@ class UserSearchComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        left: 41,
+      margin: EdgeInsets.only(
+        left: 41.w,
       ),
       child: Text(
         "Buscar usuário",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/app_colors.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/github_image_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/terms_privacy_policy_component.dart';
@@ -34,9 +35,9 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                 const GithubImageComponent(),
                 const UserSearchComponent(),
                 Container(
-                  margin: const EdgeInsets.only(
-                    top: 10,
-                    left: 40,
+                  margin: EdgeInsets.only(
+                    top: 10.h,
+                    left: 40.w,
                   ),
                   child: Text(
                     "Encontre qualquer conta através do seu usuário do GitHub.",
@@ -52,11 +53,11 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                   textEditingController: userSearchInputController,
                 ),
                 Container(
-                  height: 40,
-                  width: 295,
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 24,
-                    horizontal: 40,
+                  height: 40.h,
+                  width: 295.w,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 24.w,
+                    horizontal: 40.h,
                   ),
                   child: ElevatedButton(
                     onPressed: () {
@@ -74,7 +75,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                     style: ElevatedButton.styleFrom(
                         primary: AppColors.buttonColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100))),
+                            borderRadius: BorderRadius.circular(100.r))),
                     child: Text(
                       'Buscar',
                       style: GoogleFonts.mulish(

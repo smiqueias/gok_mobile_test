@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/view/user_repo_screen.dart';
 import 'package:gok_mobile_test/src/app/utils/user_dto.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,12 +21,12 @@ class UserInfoComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(8.0.r),
         color: AppColors.white,
       ),
-      margin: const EdgeInsets.only(top: 200),
-      width: (343 / size.width) * size.width,
-      height: (150 / size.height) * size.height,
+      margin: EdgeInsets.only(top: 200.h),
+      width: 343.w,
+      height: 150.h,
       child: InkWell(
         onTap: () => Navigator.pushNamed(
           context,
@@ -33,22 +34,22 @@ class UserInfoComponent extends StatelessWidget {
           arguments: UserDTO(state.userModel.avatarUrl, username),
         ),
         child: Container(
-          margin: const EdgeInsets.only(
-            left: 24,
-            top: 24,
-            right: 16,
+          margin: EdgeInsets.only(
+            left: 24.w,
+            top: 24.h,
+            right: 16.w,
           ),
           child: Column(
             children: [
               Row(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(50.r),
                     child: CircleAvatar(
                       child: Image.network(
                         state.userModel.avatarUrl,
-                        height: 64,
-                        width: 64,
+                        height: 64.h,
+                        width: 64.w,
                       ),
                     ),
                   ),
@@ -83,8 +84,8 @@ class UserInfoComponent extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 23,
+              SizedBox(
+                height: 23.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

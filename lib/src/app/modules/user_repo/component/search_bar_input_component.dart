@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../app_colors.dart';
@@ -21,9 +22,9 @@ class SearchBarInputComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        left: 16,
-        top: 8,
+      margin: EdgeInsets.only(
+        left: 16.w,
+        top: 8.h,
       ),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -39,8 +40,8 @@ class SearchBarInputComponent extends StatelessWidget {
           )
         ],
       ),
-      height: (40 / size.height) * size.height,
-      width: (287 / size.width) * size.width,
+      height: 40.h,
+      width: 287.w,
       child: TextField(
         controller: searchBarInputController,
         onChanged: (value) => userRepoCubit.onSubmitted(value),

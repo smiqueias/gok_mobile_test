@@ -1,24 +1,24 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../../app_colors.dart';
 
 class UserSearchFormComponent extends StatelessWidget {
-
-
   final GlobalKey<FormState> formKey;
   final TextEditingController textEditingController;
 
-  const UserSearchFormComponent({Key? key, required this.formKey, required this.textEditingController}) : super(key: key);
+  const UserSearchFormComponent(
+      {Key? key, required this.formKey, required this.textEditingController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 40,
-        vertical: 32,
+      padding: EdgeInsets.symmetric(
+        horizontal: 40.h,
+        vertical: 32.w,
       ),
       child: Form(
         key: formKey,
@@ -32,12 +32,12 @@ class UserSearchFormComponent extends StatelessWidget {
           decoration: InputDecoration(
               border: const OutlineInputBorder(),
               enabledBorder: const OutlineInputBorder(
-                borderSide:  BorderSide(
+                borderSide: BorderSide(
                   color: AppColors.borderColor,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(4.0),
+                borderRadius: BorderRadius.circular(4.0.r),
                 borderSide: const BorderSide(
                   color: AppColors.borderColor,
                 ),
@@ -51,8 +51,7 @@ class UserSearchFormComponent extends StatelessWidget {
               prefixIcon: const Icon(
                 Icons.account_circle,
                 color: AppColors.iconColor,
-              )
-          ),
+              )),
         ),
       ),
     );
