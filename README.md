@@ -5,6 +5,7 @@
 <a href="https://www.instagram.com/smiqueias_/"><img src="https://img.icons8.com/android/24/000000/instagram.png" alt="instagram"></a>
 </p>
 Aplicativo desenvolvido para facilitar a busca por usuários e repositórios no github (baseado no teste prático da empresa gok)
+
 ## Tecnologias Utilizadas
 - Dart
 - Flutter
