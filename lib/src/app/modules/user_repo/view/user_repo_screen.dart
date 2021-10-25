@@ -31,8 +31,6 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
     List<String> tags = [
       "#TagTeste01",
       "#TagTeste02",
-      "#TagTeste03",
-      "#TagTeste04",
     ];
 
     return BlocProvider(

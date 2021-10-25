@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/app_colors.dart';
+import 'package:gok_mobile_test/src/app/global/custom_button.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/github_image_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/terms_privacy_policy_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/components/user_search_component.dart';
@@ -19,6 +20,7 @@ class UserSearchScreen extends StatefulWidget {
 class _UserSearchScreenState extends State<UserSearchScreen> {
   final userSearchInputKey = GlobalKey<FormState>();
   final userSearchInputController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -53,38 +55,31 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                   textEditingController: userSearchInputController,
                 ),
                 Container(
-                  height: 40.h,
-                  width: 295.w,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 24.w,
-                    horizontal: 40.h,
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (userSearchInputKey.currentState!.validate()) {
-                        final searchedUserByUser =
-                            userSearchInputController.text.trim();
-
-                        Navigator.pushNamed(
-                          context,
-                          UserScreen.screenRoute,
-                          arguments: searchedUserByUser,
-                        );
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                        primary: AppColors.buttonColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100.r))),
-                    child: Text(
-                      'Buscar',
-                      style: GoogleFonts.mulish(
-                        fontSize: 16,
-                        color: AppColors.white,
-                      ),
+                    height: 40.h,
+                    width: 295.w,
+                    margin: EdgeInsets.symmetric(
+                      vertical: 24.w,
+                      horizontal: 40.h,
                     ),
-                  ),
-                ),
+                    child: CustomButton(
+                      label: "Buscar",
+                      onPressed: () {
+                        if (userSearchInputKey.currentState!.validate()) {
+                          final searchedUserByUser =
+                              userSearchInputController.text.trim();
+
+                          Navigator.pushNamed(
+                            context,
+                            UserScreen.screenRoute,
+                            arguments: searchedUserByUser,
+                          );
+                        }
+                      },
+                      buttonStyle: ElevatedButton.styleFrom(
+                          primary: AppColors.buttonColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100.r))),
+                    )),
                 const TermsPrivacyPolicyComponent(),
               ],
             ),
