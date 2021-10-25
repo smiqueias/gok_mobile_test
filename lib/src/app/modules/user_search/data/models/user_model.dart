@@ -1,9 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'user_model.g.dart';
-
-@JsonSerializable()
-class UserModel {
+class UserModel extends Equatable {
   final int id;
   final String login;
   final String avatarUrl;
@@ -12,10 +9,17 @@ class UserModel {
   final String? twitterUsername;
   final int? followers;
 
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        avatarUrl: json['avatar_url'] ?? "",
+        company: json['company'] ?? "Não informado",
+        followers: json['followers'] ?? "Não informado",
+        id: json['id'],
+        location: json['location'] ?? "Não informado",
+        login: json['login'] ?? "Não informado",
+        twitterUsername: json['twitter_username'] ?? "Não informado",
+      );
 
-  UserModel(
+  const UserModel(
       {required this.followers,
       required this.id,
       required this.login,
@@ -24,5 +28,7 @@ class UserModel {
       required this.location,
       required this.twitterUsername});
 
-  Map<String, dynamic> toJson() => _$UserModelToJson(this);
+  @override
+  List<Object?> get props =>
+      [id, login, avatarUrl, company, location, twitterUsername, followers];
 }
