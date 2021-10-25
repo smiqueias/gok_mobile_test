@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gok_mobile_test/src/app/configs/hive_config.dart';
 import 'package:gok_mobile_test/src/app/modules/user_search/view/user_search_screen.dart';
-
 import 'src/app/modules/user_repo/view/user_repo_screen.dart';
 import 'src/app/modules/user_search/view/user_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized;
+
+  await HiveConfig.start();
+
   runApp(const Main());
 }
 
