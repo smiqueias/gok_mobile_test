@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/user_repo_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../app_colors.dart';
 
 class SearchBarInputComponent extends StatelessWidget {
   final Size size;
   final TextEditingController searchBarInputController;
-  final dynamic state;
+  final List<UserRepoModel> state;
   final UserRepoCubit userRepoCubit;
 
   const SearchBarInputComponent({

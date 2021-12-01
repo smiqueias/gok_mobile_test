@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/search_bar_input_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/components/search_bar_input_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
-
+import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/user_repo_model.dart';
 import 'filter_list_icon_component.dart';
 
 class SearchBarComponent extends StatelessWidget {
   final Size size;
   final TextEditingController searchBarInputController;
-  final dynamic state;
+  final List<UserRepoModel> state;
   final UserRepoCubit userRepoCubit;
 
   const SearchBarComponent({

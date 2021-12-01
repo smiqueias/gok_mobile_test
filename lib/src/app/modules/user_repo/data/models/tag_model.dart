@@ -5,4 +5,6 @@ part 'tag_model.g.dart';
 class TagModel extends HiveObject {
   @HiveField(0)
   String? name;
+
+  TagModel({this.name});
 }

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/view/user_repo_screen.dart';
+import 'package:gok_mobile_test/src/app/modules/user_search/data/models/user_model.dart';
 import 'package:gok_mobile_test/src/app/utils/user_dto.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../app_colors.dart';
 
 class UserInfoComponent extends StatelessWidget {
   final Size size;
-  final dynamic state;
+  final UserModel state;
   final String username;
 
   const UserInfoComponent(
@@ -31,7 +32,7 @@ class UserInfoComponent extends StatelessWidget {
         onTap: () => Navigator.pushNamed(
           context,
           UserRepoScreen.screenRoute,
-          arguments: UserDTO(state.userModel.avatarUrl, username),
+          arguments: UserDTO(state.avatarUrl, username),
         ),
         child: Container(
           margin: EdgeInsets.only(
@@ -47,7 +48,7 @@ class UserInfoComponent extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50.r),
                     child: CircleAvatar(
                       child: Image.network(
-                        state.userModel.avatarUrl,
+                        state.avatarUrl,
                         height: 64.h,
                         width: 64.w,
                       ),
@@ -62,7 +63,7 @@ class UserInfoComponent extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            state.userModel.login,
+                            state.login,
                           ),
                           const Icon(
                             Icons.keyboard_arrow_right_rounded,
@@ -73,11 +74,10 @@ class UserInfoComponent extends StatelessWidget {
                       Row(
                         children: [
                           Visibility(
-                            visible: state.userModel.twitterUsername != null,
+                            visible: state.twitterUsername != null,
                             child: const Text("@"),
                           ),
-                          Text(state.userModel.twitterUsername ??
-                              "Não informado"),
+                          Text(state.twitterUsername ?? "Não informado"),
                         ],
                       )
                     ],
@@ -96,7 +96,7 @@ class UserInfoComponent extends StatelessWidget {
                     color: AppColors.borderColor,
                   ),
                   Text(
-                    state.userModel.company ?? "Não informado",
+                    state.company ?? "Não informado",
                     style: GoogleFonts.mulish(
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
@@ -109,7 +109,7 @@ class UserInfoComponent extends StatelessWidget {
                     color: AppColors.borderColor,
                   ),
                   Text(
-                    state.userModel.location ?? "Não informado",
+                    state.location ?? "Não informado",
                     style: GoogleFonts.mulish(
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
@@ -122,7 +122,7 @@ class UserInfoComponent extends StatelessWidget {
                     color: AppColors.borderColor,
                   ),
                   Text(
-                    state.userModel.followers.toString(),
+                    state.followers.toString(),
                     style: GoogleFonts.mulish(
                       fontWeight: FontWeight.w400,
                       fontSize: 12,

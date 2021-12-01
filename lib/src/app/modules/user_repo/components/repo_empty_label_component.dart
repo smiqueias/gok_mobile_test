@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/search_bar_input_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/components/search_bar_input_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/user_repo_model.dart';
 import 'package:gok_mobile_test/src/app/utils/user_dto.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RepoEmptyLabelComponent extends StatelessWidget {
   final UserDTO userDTO;
   final Size size;
-  final dynamic state;
+  final List<UserRepoModel> state;
   final TextEditingController searchController;
   final String label;
   final UserRepoCubit userRepoCubit;

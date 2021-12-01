@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 class DescriptionLabelComponent extends StatelessWidget {
   final Size size;
   final String description;
-  //final dynamic state;
 
   const DescriptionLabelComponent({
     Key? key,

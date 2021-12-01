@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/user_repo_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../app_colors.dart';
 
 class RepoInfoComponent extends StatelessWidget {
   final int index;
   final Size size;
-  final dynamic state;
+  final List<UserRepoModel> state;
   final UserRepoCubit userRepoCubit;
 
   const RepoInfoComponent({
@@ -36,7 +37,7 @@ class RepoInfoComponent extends StatelessWidget {
                 color: AppColors.borderColor,
               ),
               Text(
-                state.userRepoModel[index].language!,
+                state[index].language!,
                 style: GoogleFonts.mulish(
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
@@ -56,7 +57,7 @@ class RepoInfoComponent extends StatelessWidget {
                 color: AppColors.borderColor,
               ),
               Text(
-                state.userRepoModel[index].stargazersCount.toString(),
+                state[index].stargazersCount.toString(),
                 style: GoogleFonts.mulish(
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
@@ -76,7 +77,7 @@ class RepoInfoComponent extends StatelessWidget {
                 color: AppColors.borderColor,
               ),
               Text(
-                state.userRepoModel[index].watchersCount.toString(),
+                state[index].watchersCount.toString(),
                 style: GoogleFonts.mulish(
                   fontWeight: FontWeight.w400,
                   fontSize: 12,
@@ -98,7 +99,7 @@ class RepoInfoComponent extends StatelessWidget {
               Text(
                 userRepoCubit
                         .calculateRepoTime(
-                          state.userRepoModel[index].createdAt,
+                          state[index].createdAt,
                         )
                         .toString() +
                     " dias atrás",

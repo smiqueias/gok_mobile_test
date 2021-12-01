@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/user_repo_model.dart';
 import '../../../app_colors.dart';
 
 class StarIconComponent extends StatelessWidget {
   final Size size;
   final int index;
-  final dynamic state;
+  final List<UserRepoModel> state;
 
   const StarIconComponent({
     Key? key,
@@ -17,7 +18,7 @@ class StarIconComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: state.userRepoModel[index].stargazersCount > 0,
+      visible: state[index].stargazersCount > 0,
       child: Padding(
         padding: EdgeInsets.only(
           top: 24.0.h,

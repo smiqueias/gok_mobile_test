@@ -1,9 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/data/interfaces/i_user_repo.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/tag_model.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/user_repo_model.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:logger/logger.dart';
+
+import '../../../boxes.dart';
 
 part 'user_repo_state.dart';
 
@@ -12,6 +15,7 @@ class UserRepoCubit extends Cubit<UserRepoState> {
   final Logger _log;
   final String username;
   List<UserRepoModel>? userRepoModel;
+  List<TagModel>? tags;
 
   UserRepoCubit(
     this._userRepoRepository,
@@ -28,6 +32,7 @@ class UserRepoCubit extends Cubit<UserRepoState> {
       if (hasInternet) {
         emit(const UserRepoLoading());
         final userRepo = await _userRepoRepository.fetchUserRepo(username);
+        final box = Boxes.getTags();
         userRepoModel = userRepo;
         emit(UserRepoLoaded(userRepo));
       } else {

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/tag_model.dart';
 
 class UserRepoModel extends Equatable {
   final int id;
@@ -9,10 +10,10 @@ class UserRepoModel extends Equatable {
   final String htmlUrl;
   final int stargazersCount;
   final int watchersCount;
+  List<TagModel>? tags;
 
-  
-
-  const UserRepoModel({
+  UserRepoModel({
+    this.tags,
     required this.description,
     required this.id,
     required this.htmlUrl,
@@ -33,6 +34,7 @@ class UserRepoModel extends Equatable {
       watchersCount: json['watchers_count'],
       description: json['description'] ?? "Não informado",
       htmlUrl: json['html_url'],
+      tags: const [],
     );
   }
 

@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/appbar_component.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/repo_empty_label_component.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/search_bar_input_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/components/appbar_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/components/repo_empty_label_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/components/search_bar_input_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/data/repositories/user_repo_repository.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/decks/user_repo_deck.dart';
@@ -27,11 +27,6 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
     final Size size = MediaQuery.of(context).size;
 
     final userDTO = ModalRoute.of(context)!.settings.arguments as UserDTO;
-
-    List<String> tags = [
-      "#TagTeste01",
-      "#TagTeste02",
-    ];
 
     return BlocProvider(
       create: (context) => UserRepoCubit(
@@ -57,7 +52,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                         userDTO: userDTO,
                         searchController: _searchController,
                         size: size,
-                        state: state,
+                        state: state.userRepoModel,
                         userRepoCubit: context.read<UserRepoCubit>(),
                         label:
                             "${userDTO.username} não possui repositorios criados ou públicos.",
@@ -68,7 +63,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                             searchBarInputController: _searchController,
                             size: size,
                             userRepoCubit: context.read<UserRepoCubit>(),
-                            state: state,
+                            state: state.userRepoModel,
                           ),
                           SizedBox(
                             height: 8.h,
@@ -81,8 +76,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                                 return UserRepoDeck(
                                   index: index,
                                   size: size,
-                                  state: state,
-                                  tags: tags,
+                                  state: state.userRepoModel,
                                   userRepoCubit: context.read<UserRepoCubit>(),
                                 );
                               },
@@ -96,7 +90,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                         userDTO: userDTO,
                         searchController: _searchController,
                         size: size,
-                        state: state,
+                        state: state.userRepoModel,
                         userRepoCubit: context.read<UserRepoCubit>(),
                         label: "Nenhum repositório encontrado.",
                       )
@@ -106,7 +100,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                             searchBarInputController: _searchController,
                             size: size,
                             userRepoCubit: context.read<UserRepoCubit>(),
-                            state: state,
+                            state: state.userRepoModel,
                           ),
                           SizedBox(
                             height: 8.h,
@@ -119,8 +113,7 @@ class _UserRepoScreenState extends State<UserRepoScreen> {
                                 return UserRepoDeck(
                                   index: index,
                                   size: size,
-                                  state: state,
-                                  tags: tags,
+                                  state: state.userRepoModel,
                                   userRepoCubit: context.read<UserRepoCubit>(),
                                 );
                               },

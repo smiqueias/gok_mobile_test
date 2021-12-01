@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/description_label_component.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/repo_info_component.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/star_icon_component.dart';
-import 'package:gok_mobile_test/src/app/modules/user_repo/component/tag_list_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/components/description_label_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/components/repo_info_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/components/star_icon_component.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/components/tag_list_component.dart';
 import 'package:gok_mobile_test/src/app/modules/user_repo/cubit/user_repo_cubit.dart';
+import 'package:gok_mobile_test/src/app/modules/user_repo/data/models/user_repo_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../utils/extensions/string_extension.dart';
@@ -13,8 +14,7 @@ import '../../../app_colors.dart';
 class UserRepoDeck extends StatelessWidget {
   final Size size;
   final int index;
-  final dynamic state;
-  final List<String> tags;
+  final List<UserRepoModel> state;
   final UserRepoCubit userRepoCubit;
 
   const UserRepoDeck({
@@ -22,7 +22,6 @@ class UserRepoDeck extends StatelessWidget {
     required this.size,
     required this.index,
     required this.state,
-    required this.tags,
     required this.userRepoCubit,
   }) : super(key: key);
 
@@ -30,8 +29,7 @@ class UserRepoDeck extends StatelessWidget {
     if (await canLaunch(url)) {
       await launch(url, forceWebView: false, forceSafariVC: false);
     } else {
-      const snackBar =
-          SnackBar(content: Text("Não foi possível acessar o repopositório"));
+      const snackBar = SnackBar(content: Text("Não foi possível acessar o repopositório"));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
@@ -74,9 +72,7 @@ class UserRepoDeck extends StatelessWidget {
                       top: 26.h,
                     ),
                     child: Text(
-                      state.userRepoModel[index].name!
-                          .toString()
-                          .intelliTrim(23),
+                      state[index].name!.toString().intelliTrim(23),
                       style: GoogleFonts.mulish(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -92,7 +88,7 @@ class UserRepoDeck extends StatelessWidget {
                     ),
                     child: IconButton(
                       onPressed: () => _launcLink(
-                        state.userRepoModel[index].htmlUrl,
+                        state[index].htmlUrl,
                         context,
                       ),
                       icon: const Icon(
@@ -112,13 +108,7 @@ class UserRepoDeck extends StatelessWidget {
           ),
           DescriptionLabelComponent(
             size: size,
-            description: state.userRepoModel[index].description!
-                .toString()
-                .intelliTrim(40),
-          ),
-          TagListComponent(
-            tags: tags,
-            size: size,
+            description: state[index].description!.toString().intelliTrim(40),
           ),
           RepoInfoComponent(
             index: index,

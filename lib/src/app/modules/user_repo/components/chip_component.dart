@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ChipComponent extends StatefulWidget {
   final int index;
 
-  ChipComponent({
+  const ChipComponent({
     Key? key,
     required this.index,
   }) : super(key: key);
@@ -20,6 +20,7 @@ class ChipComponent extends StatefulWidget {
 
 class _ChipComponentState extends State<ChipComponent> {
   List<String> suggestions = [];
+
   @override
   void initState() {
     super.initState();
